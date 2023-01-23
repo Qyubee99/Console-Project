@@ -128,12 +128,6 @@
 						}
 					}
 
-					if (selectPointY == sell)
-					{
-						money += hsjs[count].sellingPrice;
-						count = 0;
-					}
-
 					if (count == 0 && shield > 0)
 					{
 						shield--;
@@ -144,6 +138,13 @@
 							save = 0;
 						}
 					}
+
+					if (selectPointY == sell)
+					{
+						money += hsjs[count].sellingPrice;
+						count = 0;
+					}
+
 				}
 
 				if (count == hsjs.Length)
