@@ -18,12 +18,13 @@
 			int selectPointY = 4;
 
 			int shield = 5;
-			int money = 999999999;
+			int money = 100000;
 			int count = 0;
 			int shop = 3;
 			int strengthen = 4;
 			int sell = 5;
 			int save = 0;
+			int value = 1;
 
 			Random random = new Random();
 
@@ -103,11 +104,8 @@
 
 				if(key == ConsoleKey.Spacebar)
 				{
-					if (selectPointY == shop)
-					{
-						
-					}
 					int result = random.Next(0, 100);
+					// 강화 하기
 					if (selectPointY == strengthen)
 					{
 						if (hsjs[count].Weight > result)
@@ -126,23 +124,32 @@
 						{
 							count = 0;
 						}
-					}
 
-					if (count == 0 && shield > 0)
-					{
-						shield--;
-						count = save;
-						if (shield < 0)
+						// 실패 방지권
+						if (count == 0 && shield > 0)
 						{
-							shield = 0;
-							save = 0;
+							shield--;
+							count = save;
+							if (shield < 0)
+							{
+								shield = 0;
+								save = 0;
+							}
 						}
 					}
 
+
+					// 판매하기
 					if (selectPointY == sell)
 					{
 						money += hsjs[count].sellingPrice;
 						count = 0;
+					}
+
+					// 상점 입장
+					if (selectPointY == shop)
+					{
+
 					}
 
 				}
