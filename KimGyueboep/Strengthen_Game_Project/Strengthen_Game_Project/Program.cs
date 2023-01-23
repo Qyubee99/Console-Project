@@ -18,8 +18,12 @@
 			int selectPointY = 4;
 
 			int shield = 5;
-			int money = 100000;
+			int money = 999999999;
 			int count = 0;
+			int shop = 3;
+			int strengthen = 4;
+			int sell = 5;
+			int save = 0;
 
 			Random random = new Random();
 
@@ -41,7 +45,7 @@
 				new HSJ(){Id = 14, Name = "+13 지옥의 홍성재", Weight = 45, strengthenedPrice = 55000, sellingPrice = 1000000},
 				new HSJ(){Id = 15, Name = "+14 마검을 든 홍성재", Weight = 40, strengthenedPrice = 100000, sellingPrice = 3000000},
 				new HSJ(){Id = 16, Name = "+15 데몬 홍성재", Weight = 35, strengthenedPrice = 180000, sellingPrice = 7500000},
-				new HSJ(){Id = 17, Name = "+16 투명 홍성재", Weight = 30, strengthenedPrice = 300000, sellingPrice = 14200000},
+				new HSJ(){Id = 17, Name = "+16 원한을 품은 홍성재", Weight = 30, strengthenedPrice = 300000, sellingPrice = 14200000},
 				new HSJ(){Id = 18, Name = "+17 날렵한 홍성재", Weight = 25, strengthenedPrice = 300000, sellingPrice = 20000000},
 				new HSJ(){Id = 19, Name = "+18 태초의 홍성재", Weight = 20, strengthenedPrice = 500000, sellingPrice = 30000000},
 				new HSJ(){Id = 20, Name = "+19 궁극의 홍성재", Weight = 10, strengthenedPrice = 800000, sellingPrice = 47500000},
@@ -90,26 +94,27 @@
 
 				if (key == ConsoleKey.UpArrow)
 				{
-					selectPointY = Math.Max(3, selectPointY - 1);			
+					selectPointY = Math.Max(shop, selectPointY - 1);			
 				}
 				if (key == ConsoleKey.DownArrow)
 				{
-					selectPointY = Math.Min(selectPointY + 1, 5);
+					selectPointY = Math.Min(selectPointY + 1, sell);
 				}
 
 				if(key == ConsoleKey.Spacebar)
 				{
-					if (selectPointY == 3)
+					if (selectPointY == shop)
 					{
 						
 					}
 					int result = random.Next(0, 100);
-					if (selectPointY == 4)
+					if (selectPointY == strengthen)
 					{
 						if (hsjs[count].Weight > result)
 						{
 							money -= hsjs[count].strengthenedPrice;
 							count++;
+							save++;
 							if (money < 0)
 							{
 								Console.Clear();           
@@ -123,17 +128,20 @@
 						}
 					}
 
-					if (selectPointY == 5)
+					if (selectPointY == sell)
 					{
 						money += hsjs[count].sellingPrice;
 						count = 0;
 					}
-					if (count == 0)
+
+					if (count == 0 && shield > 0)
 					{
 						shield--;
+						count = save;
 						if (shield < 0)
 						{
 							shield = 0;
+							save = 0;
 						}
 					}
 				}
