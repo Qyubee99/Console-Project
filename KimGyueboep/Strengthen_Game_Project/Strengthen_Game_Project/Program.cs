@@ -11,9 +11,6 @@
 			Console.ForegroundColor = ConsoleColor.Black;
 			Console.Clear();
 
-			// 최대 강화 수
-			const int MAX_STRENGTHEN = 21;
-
 			int selectPointX = 29;
 			int selectPointY = 4;
 
@@ -21,7 +18,7 @@
 			int shopPointY = 3;
 
 			int shield = 1;
-			int money = 100000;
+			int money = 100000000;
 			int count = 0;
 			int shop = 3;
 			int strengthen = 4;
@@ -30,7 +27,7 @@
 			int stage = 0;
 			Random random = new Random();
 
-			HSJ[] hsjs = new HSJ[MAX_STRENGTHEN]
+			HSJ[] hsjs = new HSJ[]
 			{
 				new HSJ(){Id = 1, Name = "+0 낡은 홍성재", Weight = 100, strengthenedPrice = 300, sellingPrice = 0},
 				new HSJ(){Id = 2, Name = "+1 쓸만한 홍성재", Weight = 100, strengthenedPrice = 300, sellingPrice = 150},
@@ -73,14 +70,15 @@
 
 						RenderTitle(selectPointX, selectPointY, "→");
 						RenderTitle(15, 2, "성재 강화 하기");
-						RenderTitle(6, 4, $"강화 비용:{hsjs[count].strengthenedPrice}");
-						RenderTitle(6, 5, $"판매 가격:{hsjs[count].sellingPrice}");
+						RenderTitle(8, 4, $"강화 비용:{hsjs[count].strengthenedPrice}");
+						RenderTitle(8, 5, $"판매 가격:{hsjs[count].sellingPrice}");
 						RenderTitle(17, 13, $"성공률 {hsjs[count].Weight}%");
 						RenderTitle(34, 13, $"{money}원");
 						RenderTitle(4, 13, $"방지권:{shield}");
 						RenderTitle(30, 3, "상점");
 						RenderTitle(30, 4, "강화하기");
 						RenderTitle(30, 5, "판매하기");
+						RenderTitle(50, 5, $"{save}");
 						RenderTitle(15, 8, hsjs[count].Name);
 						break;
 					case 1:
@@ -95,7 +93,17 @@
 						RenderTitle(6, 12, "나가기");
 						RenderTitle(34, 13, $"{money}원");
 						break;
+					case 2:
+						ShieldUsingSelection();
 
+						RenderTitle(10, 3, "방지권을 사용하시겠습니까?");
+						RenderTitle(18, 4, "YES / NO");
+						RenderTitle(13, 5, "Y 또는 N을 눌러주세요");
+						break;
+					default:
+						Console.Clear();
+						Console.WriteLine("[Error]");
+						break;
 				}
 
 				// ProcessInput
@@ -122,66 +130,85 @@
 					shopPointY = Math.Min(shopPointY + 3, 12);
 				}
 
+				if (key == ConsoleKey.Y)
+				{
+					// 실패 방지권 
+					if (stage == 2) // 사용할경우
+					{
+						shield--;
+						count = save;
+						stage = 0;
+					}
+				}
+
+				if (key == ConsoleKey.N)
+				{
+					// 실패 방지권
+					if (stage == 2)// 사용안했을 경우
+					{
+						stage = 0;
+						count = 0;
+						save = 0;
+					}
+				}
 				if (key == ConsoleKey.Spacebar)
 				{
 					if (stage == 1)
 					{
-						// 구매
-
-						
-							if (shopPointY == 3 && money - itemShop[0].price >= 0)
-							{
-								money -= itemShop[0].price;
-								shield++;
-							}
-							if (shopPointY == 6 && money - itemShop[1].price >= 0)
-							{
-								money -= itemShop[1].price;
-								shield += 3;
-							}
-							if (shopPointY == 9 && money - itemShop[2].price >= 0)
-							{
-								money -= itemShop[2].price;
-								shield += 5;
-							}
-						
-
+						// 방지권 구매
+						if (shopPointY == 3 && money - itemShop[0].price >= 0)
+						{
+							money -= itemShop[0].price;
+							shield++;
+						}
+						if (shopPointY == 6 && money - itemShop[1].price >= 0)
+						{
+							money -= itemShop[1].price;
+							shield += 3;
+						}
+						if (shopPointY == 9 && money - itemShop[2].price >= 0)
+						{
+							money -= itemShop[2].price;
+							shield += 5;
+						}
 					}
 
 					if (stage == 0)
 					{
+						// 0 부터 99까지 수중 하나를 추출
 						int result = random.Next(0, 100);
 						// 강화 하기
 						if (selectPointY == strengthen)
 						{
-							if (hsjs[count].Weight > result)
+							if (hsjs[count].Weight > result) // 뽑은수가 가중치보다 작으면 강화 성공
 							{
 								money -= hsjs[count].strengthenedPrice;
-								count++;
-								save++;
-								if (money < 0)
-								{
-									Console.Clear();
-									Console.WriteLine("이걸 실패하네 넌 성재보다도 못하다");
-									break;
-								}
+								count++; // 강화가 성공할때 카운트상승
+								save++; // 강화가 성공할때 세이브포인트 상승
 							}
 							else
 							{
-								count = 0;
-							}
-
-							// 실패 방지권
-							if (count == 0 && shield > 0)
-							{
-								shield--;
-								count = save;
-								if (shield < 0)
+								count = 0; // 실패하면 카운트 0 
+								if (shield <= 0 && count == 0)
 								{
 									shield = 0;
 									save = 0;
 								}
 							}
+
+							if ((count == 0 && shield > 0) && (selectPointY != 3 && selectPointY != 5))
+							{
+								// 방지권 사용할 유무 창 뜨게하기
+								stage += 2;
+							}
+
+							if (money < 0)
+							{
+								// 소지금이 0원보다 적을때 게임오버
+								Console.Clear();
+								Console.WriteLine("이걸 실패하네 넌 성재보다도 못하다");
+								break;
+							} 
 						}
 
 						// 판매하기
@@ -245,7 +272,29 @@
 				Console.WriteLine("   ※                                      ※");
 				Console.WriteLine("   ※                                      ※");
 				Console.WriteLine("   ※                                      ※");
-				Console.WriteLine("   ※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※");
+				Console.WriteLine("   ※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※"); // for문
+			}
+
+			void ShieldUsingSelection()
+			{
+				Console.SetCursorPosition(8, 1);
+				Console.WriteLine("※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※");
+				Console.SetCursorPosition(8, 2);
+				Console.WriteLine("※                            ※");
+				Console.SetCursorPosition(8, 3);
+				Console.WriteLine("※                            ※");
+				Console.SetCursorPosition(8, 4);
+				Console.WriteLine("※                            ※");
+				Console.SetCursorPosition(8, 5);
+				Console.WriteLine("※                            ※");
+				Console.SetCursorPosition(8, 6);
+				Console.WriteLine("※                            ※");
+				Console.SetCursorPosition(8, 7);
+				Console.WriteLine("※                            ※");
+				Console.SetCursorPosition(8, 8);
+				Console.WriteLine("※                            ※");
+				Console.SetCursorPosition(8, 9);
+				Console.WriteLine("※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※");
 			}
 		}
 	}
