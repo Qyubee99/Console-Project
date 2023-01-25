@@ -226,7 +226,7 @@
 								shopPointY = 3;
 						}
 					}
-
+					
 					// 상점 탈출
 					if (stage == 1)
 					{
