@@ -40,12 +40,12 @@ namespace Strengthen_Game_Project
 				new HSJ(){Id = 3, Name = "+2 견고한 홍성재", Weight = 100, strengthenedPrice = 500, sellingPrice = 1500},
 				new HSJ(){Id = 4, Name = "+3 강철 홍성재", Weight = 95, strengthenedPrice = 500, sellingPrice = 1600},
 				new HSJ(){Id = 5, Name = "+4 날렵한 홍성재", Weight = 90, strengthenedPrice = 1000, sellingPrice = 2500},
-				new HSJ(){Id = 6, Name = "+5 불타는 홍성재", Weight = 85, strengthenedPrice = 1500, sellingPrice = 3000},
-				new HSJ(){Id = 7, Name = "+6 냉기의 홍성재", Weight = 80, strengthenedPrice = 2000, sellingPrice = 4500},
+				new HSJ(){Id = 6, Name = "+5 불타는 홍성재", Weight = 90, strengthenedPrice = 1500, sellingPrice = 3000},
+				new HSJ(){Id = 7, Name = "+6 냉기의 홍성재", Weight = 85, strengthenedPrice = 2000, sellingPrice = 4500},
 				new HSJ(){Id = 8, Name = "+7 날렵한 홍성재", Weight = 80, strengthenedPrice = 2000, sellingPrice = 7100},
-				new HSJ(){Id = 9, Name = "+8 마력의 홍성재", Weight = 75, strengthenedPrice = 3000, sellingPrice = 10000},
-				new HSJ(){Id = 10, Name = "+9 빛나는 홍성재", Weight = 70, strengthenedPrice = 5000, sellingPrice = 20000},
-				new HSJ(){Id = 11, Name = "+10 폭풍의 홍성재", Weight = 70, strengthenedPrice = 10900, sellingPrice = 35100},
+				new HSJ(){Id = 9, Name = "+8 마력의 홍성재", Weight = 80, strengthenedPrice = 3000, sellingPrice = 10000},
+				new HSJ(){Id = 10, Name = "+9 빛나는 홍성재", Weight = 75, strengthenedPrice = 5000, sellingPrice = 20000},
+				new HSJ(){Id = 11, Name = "+10 폭풍의 홍성재", Weight = 70, strengthenedPrice = 10900, sellingPrice = 85100},
 				new HSJ(){Id = 12, Name = "+11 피묻은 홍성재", Weight = 65, strengthenedPrice = 20000, sellingPrice = 160000},
 				new HSJ(){Id = 13, Name = "+12 화염의 홍성재", Weight = 55, strengthenedPrice = 35000, sellingPrice = 350000},
 				new HSJ(){Id = 14, Name = "+13 지옥의 홍성재", Weight = 50, strengthenedPrice = 55000, sellingPrice = 1000000},
@@ -60,9 +60,9 @@ namespace Strengthen_Game_Project
 
 			Shop[] itemShop = new Shop[]
 			{
-				new Shop(){ Id = 1, Name = "방지권 1개", price = 1000000},
-				new Shop(){ Id = 2, Name = "방지권 3개", price = 2500000},
-				new Shop(){ Id = 3, Name = "방지권 5개", price = 4300000},
+				new Shop(){ Id = 1, Name = "방지권 1개", price = 700000},
+				new Shop(){ Id = 2, Name = "방지권 3개", price = 1900000},
+				new Shop(){ Id = 3, Name = "방지권 5개", price = 3200000},
 			};
 
 
@@ -76,16 +76,26 @@ namespace Strengthen_Game_Project
 
 						RenderTitle(selectArrow.selectPointX, selectArrow.selectPointY, "→");
 						RenderTitle(15, 2, "성재 강화 하기");
-						RenderTitle(8, 4, $"강화 비용:{hsjs[strengthenCount].strengthenedPrice}");
-						RenderTitle(8, 5, $"판매 가격:{hsjs[strengthenCount].sellingPrice}");
+						RenderTitle(8, 4, $"강화 비용:{hsjs[strengthenCount].strengthenedPrice}원");
+						RenderTitle(8, 5, $"판매 가격:{hsjs[strengthenCount].sellingPrice}원");
 						RenderTitle(17, 13, $"성공률 {hsjs[strengthenCount].Weight}%");
 						RenderTitle(34, 13, $"{money}원");
 						RenderTitle(4, 13, $"방지권:{shield}");
 						RenderTitle(30, 3, "상점");
 						RenderTitle(30, 4, "강화하기");
 						RenderTitle(30, 5, "판매하기");
-						RenderTitle(50, 5, $"{strengthenSave}");
 						RenderTitle(15, 8, hsjs[strengthenCount].Name);
+						RenderTitle(45, 2, "Warning 소지금을 잘보고 강화해주세요!!!!!!!!!!!!!!!!!");
+						RenderTitle(45, 3, "Warning 소지금을 잘보고 강화해주세요!!!!!!!!!!!!!!!!!");
+						RenderTitle(45, 4, "Warning 소지금을 잘보고 강화해주세요!!!!!!!!!!!!!!!!!");
+						RenderTitle(45, 5, "Warning 소지금을 잘보고 강화해주세요!!!!!!!!!!!!!!!!!");
+						RenderTitle(45, 6, "Warning 소지금을 잘보고 강화해주세요!!!!!!!!!!!!!!!!!");
+						RenderTitle(45, 7, "Warning 소지금을 잘보고 강화해주세요!!!!!!!!!!!!!!!!!");
+						RenderTitle(45, 8, "Warning 소지금을 잘보고 강화해주세요!!!!!!!!!!!!!!!!!");
+						RenderTitle(45, 9, "Warning 소지금을 잘보고 강화해주세요!!!!!!!!!!!!!!!!!");
+						RenderTitle(45, 10, "Warning 소지금을 잘보고 강화해주세요!!!!!!!!!!!!!!!!!");
+						RenderTitle(45, 11, "Warning 소지금을 잘보고 강화해주세요!!!!!!!!!!!!!!!!!");
+						RenderTitle(45, 12, "Warning 소지금을 잘보고 강화해주세요!!!!!!!!!!!!!!!!!");
 						break;
 					case 1:
 						Console.Clear();
