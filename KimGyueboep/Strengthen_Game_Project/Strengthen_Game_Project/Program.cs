@@ -17,7 +17,7 @@ namespace Strengthen_Game_Project
 			// 수치들
 			int money = 100000;
 			int startStrengthen = 4;
-			int shield = 1;
+			int shield = 0;
 			int strengthenCount = 0;
 			int strengthenSave = 0;
 			int stage = 0;
@@ -44,25 +44,25 @@ namespace Strengthen_Game_Project
 				new HSJ(){Id = 7, Name = "+6 불타는 홍성재", Weight = 85, strengthenedPrice = 2000, sellingPrice = 4500},
 				new HSJ(){Id = 8, Name = "+7 냉기의 홍성재", Weight = 80, strengthenedPrice = 2000, sellingPrice = 7100},
 				new HSJ(){Id = 9, Name = "+8 날렵한 홍성재", Weight = 80, strengthenedPrice = 3000, sellingPrice = 10000},
-				new HSJ(){Id = 10, Name = "+9 빛나는 홍성재", Weight = 75, strengthenedPrice = 5000, sellingPrice = 20000},
-				new HSJ(){Id = 11, Name = "+10 폭풍의 홍성재", Weight = 70, strengthenedPrice = 10900, sellingPrice = 85100},
-				new HSJ(){Id = 12, Name = "+11 피묻은 홍성재", Weight = 65, strengthenedPrice = 20000, sellingPrice = 160000},
-				new HSJ(){Id = 13, Name = "+12 화염의 홍성재", Weight = 55, strengthenedPrice = 35000, sellingPrice = 350000},
-				new HSJ(){Id = 14, Name = "+13 지옥의 홍성재", Weight = 50, strengthenedPrice = 55000, sellingPrice = 1000000},
-				new HSJ(){Id = 15, Name = "+14 원한을 품은 홍성재", Weight = 45, strengthenedPrice = 100000, sellingPrice = 3000000},
-				new HSJ(){Id = 16, Name = "+15 친일파 홍성재", Weight = 40, strengthenedPrice = 180000, sellingPrice = 7500000},
-				new HSJ(){Id = 17, Name = "+16 깨달은 홍성재", Weight = 35, strengthenedPrice = 300000, sellingPrice = 14200000},
+				new HSJ(){Id = 10, Name = "+9 빛나는 홍성재", Weight = 75, strengthenedPrice = 6000, sellingPrice = 20000},
+				new HSJ(){Id = 11, Name = "+10 폭풍의 홍성재", Weight = 70, strengthenedPrice = 20900, sellingPrice = 85100},
+				new HSJ(){Id = 12, Name = "+11 피묻은 홍성재", Weight = 65, strengthenedPrice = 30000, sellingPrice = 160000},
+				new HSJ(){Id = 13, Name = "+12 화염의 홍성재", Weight = 55, strengthenedPrice = 45000, sellingPrice = 350000},
+				new HSJ(){Id = 14, Name = "+13 지옥의 홍성재", Weight = 50, strengthenedPrice = 75000, sellingPrice = 1000000},
+				new HSJ(){Id = 15, Name = "+14 원한을 품은 홍성재", Weight = 45, strengthenedPrice = 100000, sellingPrice = 2000000},
+				new HSJ(){Id = 16, Name = "+15 친일파 홍성재", Weight = 40, strengthenedPrice = 180000, sellingPrice = 5500000},
+				new HSJ(){Id = 17, Name = "+16 깨달은 홍성재", Weight = 35, strengthenedPrice = 300000, sellingPrice = 11000000},
 				new HSJ(){Id = 18, Name = "+17 국군 홍성재", Weight = 30, strengthenedPrice = 300000, sellingPrice = 20000000},
 				new HSJ(){Id = 19, Name = "+18 태초의 홍성재", Weight = 25, strengthenedPrice = 500000, sellingPrice = 30000000},
 				new HSJ(){Id = 20, Name = "+19 궁극의 홍성재", Weight = 20, strengthenedPrice = 800000, sellingPrice = 47500000},
-				new HSJ(){Id = 21, Name = "+20 GOD성재", Weight = 5, strengthenedPrice = 1500000, sellingPrice = 68300000},
+				new HSJ(){Id = 21, Name = "+20 GOD성재", Weight = 5, strengthenedPrice = 1500000, sellingPrice = 63000000},
 			};
 
 			Shop[] itemShop = new Shop[]
 			{
-				new Shop(){ Id = 1, Name = "방지권 1개", price = 700000},
-				new Shop(){ Id = 2, Name = "방지권 3개", price = 1900000},
-				new Shop(){ Id = 3, Name = "방지권 5개", price = 3200000},
+				new Shop(){ Id = 1, Name = "방지권 1개", price = 1000000},
+				new Shop(){ Id = 2, Name = "방지권 3개", price = 2500000},
+				new Shop(){ Id = 3, Name = "방지권 5개", price = 4300000},
 			};
 
 
